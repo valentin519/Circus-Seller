@@ -35,6 +35,7 @@ app.get('/products', (req, res) => {
 	let sqlQuery = `SELECT product.title, product.content, product.price, product.pictur`
   	connection.query(sqlQuery, (err, results) => {
     if (err) {
+		console.log(err)
       res.status(500).send('Erreur lors de la récupération des posts');
     } else {
       res.json(results);

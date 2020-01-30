@@ -16,7 +16,7 @@ create table product
     id int auto_increment primary key,
     title varchar(50) not null,
     content varchar(300) not null,
-    price varchar(30) not null,
+    price int not null,
     pictur varchar(200) not null
 );
 create table panier
@@ -29,10 +29,10 @@ create table panier
 );
 
 INSERT INTO `user`
-(`firstname`, `adress` , `lastname`, `password`, `email`) 
+(`firstname`, `lastname`, `adress` , `password`, `email`) 
 VALUES
-('Val', '76 rue de la mouette 75010 Paris' 'Jul', 'test', '@test');
+('Val', 'Jul', '76 rue de la mouette 75010 Paris', 'test', '@test');
 INSERT INTO `product`
 (`title`, `content` , `price` , `pictur`) 
 VALUES
-('Maximus', 'Grand magicien illusioniste' '1449.99', 'test','https://zupimages.net/up/20/05/idow.jpg');
+('Maximus', 'Grand magicien illusioniste', '1449','https://zupimages.net/up/20/05/idow.jpg');
