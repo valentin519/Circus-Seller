@@ -30,7 +30,7 @@ function verifyToken(req, res, next){
    }
 }
 
-app.get('/posts', verifyToken, (req, res) => {
+app.get('/products', verifyToken, (req, res) => {
 	const userId = req.authData.sub
 	const sqlQuery = `SELECT user.firstname, user.lastname, user.city, user.profile_pic, user.study, post.*, DATE_FORMAT(post.created_at, "Posté le : %d/%m/%y à %H:%i") AS created_at, DATE_FORMAT(post.event_date, "Le %d/%m/%y à %H:%i") AS event_date, COUNT(likes.post_id) AS likes, CASE WHEN EXISTS (SELECT * FROM likes WHERE post.id = likes.post_id AND likes.user_id = ${userId}) THEN TRUE ELSE FALSE END AS likedByUser FROM post LEFT JOIN likes ON post.id=likes.post_id JOIN user on user.id=post.user_id GROUP BY post.id`
 	connection.query(sqlQuery, (err, results) => {
@@ -43,24 +43,7 @@ app.get('/posts', verifyToken, (req, res) => {
   });
 });
 
-app.post('/posts', verifyToken, (req, res) => {
-  	const formData = {
-		user_id: req.authData.sub,
-		title: req.body.title,
-		category: req.body.category,
-		content: req.body.content,
-		event_date: req.body.event_date
-	}
-	const sqlQuery = 'INSERT INTO post SET ?';
-  	connection.query(sqlQuery, formData, (err, results) => {
-		if (err) {
-		console.log(err);
-		res.status(500).send("Error sending a new post");
-		} else {
-		res.sendStatus(200);
-		}
-  	});
-});
+
 
 app.post('/login', (req, res) => {
 	const userPassword = req.body.password;
@@ -98,20 +81,9 @@ app.post('/register', (req, res) => {
   	});
 })
 
-app.get ('/profiles/:userId', verifyToken, (req, res) => {
-	const userId = req.authData.sub
-	const sqlQuery = 'SELECT * FROM user WHERE user.id = ?'
-	connection.query(sqlQuery, userId, (err, results) => {
-		if (err) {
-			console.log(err)
-			res.status(500).send('error getting user data');
-		} else {
-			res.json(results)
-		}
-	})
-})
 
-app.get('/postsaves', verifyToken, (req, res) => {
+
+app.get('/panier', verifyToken, (req, res) => {
 	const userId = req.authData.sub
 	const sqlQuery = `SELECT post.id, CASE WHEN EXISTS (SELECT * FROM post_saves WHERE post.id=post_saves.post_id AND post_saves.user_id=${userId}) THEN TRUE ELSE FALSE END AS savedByUser FROM post LEFT JOIN post_saves ON post.id=post_saves.post_id GROUP BY post.id`
 	connection.query(sqlQuery, (err, results) => {
@@ -159,30 +131,9 @@ app.put('/postsaves', verifyToken, (req, res) => {
 	})
 })
 
-app.get('/:userId/postsaves', verifyToken, (req, res) => {
-	const userId = req.authData.sub
-	const sqlQuery = `SELECT user.firstname, user.lastname, user.city, user.profile_pic, user.study,post.*, DATE_FORMAT(post.created_at, "Posté le : %d/%m/%y à %H:%i") AS created_at, DATE_FORMAT(post.event_date, "Le %d/%m/y% à %H:%i") AS event_date FROM post JOIN post_saves ON post_saves.post_id = post.id JOIN user ON user.id=post.user_id WHERE post_saves.user_id = ${userId}`
-	connection.query(sqlQuery, (err, results) => {
-		if (err) {
-			console.log(err)
-			res.status(500).send("Error getting posts in library")
-		} else {
-			res.json(results)
-		}
-	})
-})
 
-app.get ('/likes', verifyToken, (req, res) => {
-	const sqlQuery = 'SELECT * from likes';
-	connection.query(sqlQuery, (err, results) => {
-		if (err) {
-			console.log(err)
-			res.status(500).send("Error getting likes");			
-		} else {
-			res.json(results);
-		}	
-	})
-})
+
+
 
 app.put('/likes', verifyToken, (req, res) => {
 	const userId = req.authData.sub
