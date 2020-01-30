@@ -30,19 +30,17 @@ function verifyToken(req, res, next){
    }
 }
 
-app.get('/posts', verifyToken, (req, res) => {
-	const userId = req.authData.sub
-	const sqlQuery = `SELECT user.firstname, user.lastname, user.city, user.profile_pic, user.study, post.*, DATE_FORMAT(post.created_at, "Posté le : %d/%m/%y à %H:%i") AS created_at, DATE_FORMAT(post.event_date, "Le %d/%m/%y à %H:%i") AS event_date, COUNT(likes.post_id) AS likes, CASE WHEN EXISTS (SELECT * FROM likes WHERE post.id = likes.post_id AND likes.user_id = ${userId}) THEN TRUE ELSE FALSE END AS likedByUser FROM post LEFT JOIN likes ON post.id=likes.post_id JOIN user on user.id=post.user_id GROUP BY post.id`
-	connection.query(sqlQuery, (err, results) => {
+
+app.get('/products', (req, res) => {
+	let sqlQuery = `SELECT product.title, product.content, product.price, product.pictur`
+  	connection.query(sqlQuery, (err, results) => {
     if (err) {
-		console.log(err)
-      	res.status(500).send('Erreur lors de la récupération des posts');
-    } 	else {
-      	res.json(results);
+      res.status(500).send('Erreur lors de la récupération des posts');
+    } else {
+      res.json(results);
     }
   });
 });
-
 app.post('/posts', verifyToken, (req, res) => {
   	const formData = {
 		user_id: req.authData.sub,

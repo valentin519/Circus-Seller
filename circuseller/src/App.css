@@ -1,6 +1,12 @@
-.App {
-  text-align: center;
+
+html { 
+  background: url('https://zupimages.net/up/20/05/qx09.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
+
 
 .App-logo {
   height: 40vmin;
