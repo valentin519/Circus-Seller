@@ -36,3 +36,15 @@ INSERT INTO `product`
 (`title`, `content` , `price` , `pictur`) 
 VALUES
 ('Maximus', 'Grand magicien illusioniste', '1449','https://zupimages.net/up/20/05/idow.jpg');
+INSERT INTO `product`
+(`title`, `content` , `price` , `pictur`) 
+VALUES
+('Gloria', 'Voltigeuse mondialement reconnus', '1249','https://zupimages.net/up/20/05/03gr.jpg');
+INSERT INTO `product`
+(`title`, `content` , `price` , `pictur`) 
+VALUES
+('Enrico', 'Voltigeur mondialement reconnus', '1529','https://zupimages.net/up/20/05/46p6.jpg');
+INSERT INTO `product`
+(`title`, `content` , `price` , `pictur`) 
+VALUES
+('Rigolo', 'Clown pour enfants et adultes', '719','https://zupimages.net/up/20/05/lsk0.jpg');

@@ -11,7 +11,8 @@ const Welcome = () => {
                 <p className = 'titleWelcome'>Circus Seller</p>
             </div>
             <div className = 'buttonWelcome'>
-                <Link className = 'linkToLog' to ='/login'>test</Link>
+                <Link className = 'linkTo' to ='/login'>Se connecter</Link>
+                <Link className = 'linkTo' to ='/register'>S'inscrire</Link>
             </div>
         </div>
     )

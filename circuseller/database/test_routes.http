@@ -1,0 +1,103 @@
+### GET all posts
+GET http://localhost:8000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU3OTU0Nzg5NCwiZXhwIjoxNTc5NTQ4MDc0fQ.5xikE842nlcN6Qrlpt0TFIVwL6ShK3C4dyMGW2AjwLE
+### GET one post
+GET http://localhost:8000/posts/1
+
+### POST a new post : json
+POST http://localhost:8000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU3OTU0ODAwMCwiZXhwIjoxNTc5NTQ4MTgwfQ.CctXoyldr5jpQvKSF_Kk6cRJ77-Y9TSyZQb2qqLgw3Y
+Content-Type: application/json
+
+{
+    "user_id": "1",
+    "title": "Cours de maths",
+    "category": "Cours",
+    "content": "Bonjour, pour ceux que cela peut intéresser, je peux donner des cours de maths. Me contacter par MP !"
+}
+
+### POST : user login (RIGHT LOGIN), json
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "email": "@test",
+    "password": "test"
+}
+### POST : user login (RIGHT LOGIN), json
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "email": "val@gmail.com",
+    "password": "tutu"
+}
+
+### POST : user login (WRONG LOGIN), json
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "email": "yligotmi@p.com",
+    "password": "pouetp"
+}
+
+### POST : register new user : json
+POST http://localhost:8000/register
+Content-Type: application/json
+
+{
+    "firstname": "Eddy",
+    "lastname": "Patou",
+    "password": "pouet",
+    "email": "eddypatou@hotmail.com",
+    "birthday": "2001-05-06",
+    "hobbies": "BD, arts",
+    "study": "Histoire de l'art",
+    "bio": "Passionné d'art, je m'intéresse tout particulièrement à la BD",
+    "city": "Grenoble"
+}
+
+### GET : all likes
+GET http://localhost:8000/likes
+
+### GET one like (that doesn't exists)
+GET http://localhost:8000/likes
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "post_id": 1
+}
+
+### PUT : manage like / unlike of user
+PUT http://localhost:8000/likes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU3OTU0ODgxOCwiZXhwIjoxNTc5NTQ4OTk4fQ.AelPXJbb2jEfF6u8Obzgs210lWWj5Mo-Z-McojZiscI
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "post_id": 1
+}
+
+### GET all posts if saved by user
+GET http://localhost:8000/postsaves
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU3OTY4MzE1MiwiZXhwIjoxNTc5NjgzNzUyfQ.FqyyxlzPbDmbKfy-OHIQAUfqvyQQpFLC1d6Au7wNMTg
+
+### PUT : manage save / unsave of a post by a user
+PUT http://localhost:8000/1/postsaves
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU3OTY4MzE1MiwiZXhwIjoxNTc5NjgzNzUyfQ.FqyyxlzPbDmbKfy-OHIQAUfqvyQQpFLC1d6Au7wNMTg
+Content-Type: application/json
+
+{
+    "post_id": 1
+}
+
+### GET : get only posts saved by user
+GET http://localhost:8000/1/postsaves
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU3OTcyNDYyMiwiZXhwIjoxNTc5NzI1MjIyfQ.TVkNSzbki3eaaIG80Nhl0iu3zpYJp1YPKyFjUydnSxA
+
+
+### GET user's own data
+GET http://localhost:8000/profiles/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU3OTcyNzUxNSwiZXhwIjoxNTc5NzI4MTE1fQ.1grWjFlinCydjaKVtwBOkt0fKHLkQe9RUm6CcFq6IGM

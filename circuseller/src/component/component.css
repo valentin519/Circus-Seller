@@ -6,5 +6,80 @@
 }
 .titleWelcome{
     color: black;
-    font-size: 48px;
+    font-size: 38px;
+}
+.buttonWelcome{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.linkTo{
+    width: 20%;
+	height: 3vh;
+	border-radius: 22px;
+	padding: 2%;
+	font-size: 30px;
+	background-color: white;
+	text-align: center;
+	text-decoration: none;
+    color: black;
+    margin: 2%;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.titleConnection{
+    font-size: 24px;
+}
+.productCard{
+    display: flex;
+	flex-direction: column;
+	background-color: #e2e2e2;
+	border: solid rgb(219, 219, 219) 2px;
+	align-items: center;
+	padding: 0.5rem;
+    width: 20%;
+    justify-content: center;
+    font-size: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.avatar{
+        max-width: 10vw;
+        max-height: 15vw;
+        border: 2px solid black;
+}
+.cardList{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.form-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-data input{
+    width: 40%;
+}
+.titleMain{
+    font-size: 68px;
+}
+.titleDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.panierDiv{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 5%;
+    font-size: 28px;
+}
+.buyIcon{
+    width: 15%;
+    margin: 2%;
 }

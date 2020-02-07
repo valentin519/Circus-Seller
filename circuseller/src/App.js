@@ -3,7 +3,9 @@ import Login from './component/Login';
 import './App.css';
 import Welcome from './component/Welcome';
 import { Switch, Route } from 'react-router-dom';
-import Main from './component/Main'
+import Main from './component/Main';
+import Register from './component/Register';
+import ProductAdd from './component/ProductAdd';
 
 function App() {
 	const [token, setToken] = useState(null);
@@ -18,6 +20,12 @@ function App() {
 				</Route>
 				<Route path='/main'>
 					<Main token={token} />
+				</Route>
+				<Route path='/register'>
+					<Register token={token} />
+				</Route>
+				<Route path='/productadd'>
+					<ProductAdd token={token} />
 				</Route>
 			</Switch>
     </div>

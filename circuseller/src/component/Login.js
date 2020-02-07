@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import './component.css';
 
 class Login extends React.Component {
 	constructor(props) {
@@ -40,14 +41,19 @@ class Login extends React.Component {
 	render() {
 		const isConnected = this.props.token !== null;
 		if (isConnected) {
-			return <Redirect to='/mainthread' />;
+			return <Redirect to='/main' />;
 		}
 		return (
 			<div className='conectForm'>
 				<div className='form'>
+					<div className ='divTitleWelcome'>
+						<p className = 'titleWelcome'>Bienvenu</p>
+						<p className = 'titleWelcome'>Au</p>
+						<p className = 'titleWelcome'>Circus Seller</p>
+            		</div>
 					<p className='titleConnection'>Se connecter</p>
 					<input
-						placeholder='Tel ou email'
+						placeholder='email'
 						type='email'
 						id='email'
 						name='email'
@@ -63,21 +69,17 @@ class Login extends React.Component {
 						onChange={this.onChange}
 						value={this.state.password}
 					/>
-					<div className='bottomPage'>
 						<Link
-							className='validationButton'
+							className='linkTo'
 							type='submit'
-							to='/mainthread'
+							to='/main'
 							onClick={this.handleSubmit}
                         >
 							Valider
 						</Link>
-						<p className='forgotPass'>Mot de passe oublié?</p>
-						<p className='or'>Ou</p>
-						<Link className='loginButton' type='button' to='/register'>
+						<Link className='linkTo' type='button' to='/register'>
 							Créer un compte
 						</Link>
-					</div>
 				</div>
 			</div>
 		);
